@@ -1,5 +1,10 @@
-export type Job = string[];
+export type Job = string;
 
 export interface HasJobs {
-    findJobs(): Job[]
+    /**
+     * FInd jobs in company.
+     *
+     * @return {Promise<Job[]>}
+     */
+    findJobs(): Promise<Job[]>;
 }
