@@ -2,9 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Companies } from './companies';
+import { NeoAssistModule } from './neo-assist/neo-assist.module';
 
 @Module({
-  imports: [],
+  imports: [
+    NeoAssistModule,
+  ],
   controllers: [AppController],
   providers: [
     AppService,

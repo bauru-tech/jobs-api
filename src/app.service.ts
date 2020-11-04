@@ -15,8 +15,11 @@ export class AppService {
   async getJobs(): Promise<Job[]> {
     const companiesJobs: Array<Job[]> = await Promise.all(this.companies
       .getCompanies()
-      .map((company: HasJobs) => company.findJobs().catch(() => null)));
+      .map((company: HasJobs) => {
+        return company.findJobs().catch((err) => null);
+      }));
 
-    return flatMap(companiesJobs);
+    return flatMap(companiesJobs)
+      .filter(r => !!r);
   }
 }
