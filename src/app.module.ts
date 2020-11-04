@@ -6,6 +6,7 @@ import { NeoAssistModule } from './neo-assist/neo-assist.module';
 import { EzDevsModule } from './ez-devs/ez-devs.module';
 import { FireworkModule } from './firework/firework.module';
 import { ArcaSolutionsModule } from './arca-solutions/arca-solutions.module';
+import { NewWayModule } from './new-way/new-way.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ArcaSolutionsModule } from './arca-solutions/arca-solutions.module';
     EzDevsModule,
     FireworkModule,
     ArcaSolutionsModule,
+    NewWayModule,
   ],
   controllers: [AppController],
   providers: [

@@ -4,6 +4,7 @@ import { NeoAssistService } from './neo-assist/neo-assist.service';
 import { EzDevsService } from './ez-devs/ez-devs.service';
 import { FireworkService } from './firework/firework.service';
 import { ArcaSolutionsService } from './arca-solutions/arca-solutions.service';
+import { NewWayService } from './new-way/new-way.service';
 
 @Injectable()
 export class Companies {
@@ -40,14 +41,23 @@ export class Companies {
   protected arcaSolutionsService: ArcaSolutionsService;
 
   /**
+   * NewWayService.
+   *
+   * @protected
+   */
+  @Inject(NewWayService)
+  protected newWayService: NewWayService;
+
+  /**
    * Get companies.
    */
   getCompanies(): HasJobs[] {
     return [
-      this.neoAssistService,
-      this.ezDevsServices,
-      this.fireworkService,
-      this.arcaSolutionsService,
+      // this.neoAssistService,
+      // this.ezDevsServices,
+      // this.fireworkService,
+      // this.arcaSolutionsService,
+      this.newWayService,
     ];
   }
 }

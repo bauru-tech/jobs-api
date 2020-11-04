@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
 import * as cheerio from 'cheerio';
 import { Job } from '../support/support.interface';
-import Cheerio = cheerio.Cheerio;
 
 @Injectable()
 export class NeoAssistParser {
