@@ -68,7 +68,7 @@ export class NeoAssistParser {
    * @param $
    * @protected
    */
-  protected extractJobSalary($: cheerio.Root): null | string {
+  protected extractJobSalary($: cheerio.Root): null | number {
     const salaryElement = $("body > section div.text-left > strong.price");
     if (salaryElement.length === 0) {
       return null;
@@ -79,7 +79,7 @@ export class NeoAssistParser {
       return null;
     }
 
-    return salary;
+    return parseFloat(salary);
   }
 
   /**

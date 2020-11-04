@@ -7,7 +7,7 @@ export interface Job {
   title: string;
   company: Company;
   link: string;
-  salary: null | string;
+  salary: null | number;
   level: null | string;
   type: null | string;
   description: string;
