@@ -89,31 +89,7 @@ export class NeoAssistParser {
    * @return {string}
    */
   protected extractJobDescription($: cheerio.Root): string {
-    const elementsToRemove = ['input', 'script'];
-
-    let descriptionFinished = false;
-    let description = '';
-
-    $("body > section .content-area .box .custom_format > *")
-      .each((index: number, element: cheerio.Element) => {
-        if (elementsToRemove.includes(element.tagName) || descriptionFinished) {
-          return;
-        }
-
-        const $el = $(element);
-
-        if (element.tagName === 'h4') {
-          if ($el.text() === 'Requisitos') {
-            descriptionFinished = true;
-          }
-
-          return;
-        }
-
-        description += $el.html().normalize();
-      });
-
-    return description;
+    return $("body > section .content-area .box .custom_format").text().trim();
   }
 
   /**
