@@ -63,11 +63,11 @@ export class Companies {
    */
   getCompanies(): HasJobs[] {
     return [
-      // this.neoAssistService,
-      // this.ezDevsServices,
-      // this.fireworkService,
-      // this.arcaSolutionsService,
-      // this.newWayService,
+      this.neoAssistService,
+      this.ezDevsServices,
+      this.fireworkService,
+      this.arcaSolutionsService,
+      this.newWayService,
       this.labsPaschoalottoService
     ];
   }
