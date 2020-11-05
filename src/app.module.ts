@@ -8,6 +8,7 @@ import { FireworkModule } from './firework/firework.module';
 import { ArcaSolutionsModule } from './arca-solutions/arca-solutions.module';
 import { NewWayModule } from './new-way/new-way.module';
 import { LabsPaschoalottoModule } from './labs-paschoalotto/labs-paschoalotto.module'
+import { GalataModule } from './galata/galata.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { LabsPaschoalottoModule } from './labs-paschoalotto/labs-paschoalotto.mo
     ArcaSolutionsModule,
     NewWayModule,
     LabsPaschoalottoModule,
+    GalataModule,
   ],
   controllers: [AppController],
   providers: [

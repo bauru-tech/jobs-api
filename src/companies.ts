@@ -6,6 +6,7 @@ import { FireworkService } from './firework/firework.service';
 import { ArcaSolutionsService } from './arca-solutions/arca-solutions.service';
 import { NewWayService } from './new-way/new-way.service';
 import { LabsPaschoalottoService } from './labs-paschoalotto/labs-paschoalotto.service'
+import { GalataService } from './galata/galata.service';
 
 @Injectable()
 export class Companies {
@@ -57,6 +58,13 @@ export class Companies {
   @Inject(LabsPaschoalottoService)
   protected labsPaschoalottoService: LabsPaschoalottoService;
 
+  /**
+   * GalataService.
+   *
+   * @protected
+   */
+  @Inject(GalataService)
+  protected galataService: GalataService;
 
   /**
    * Get companies.
@@ -68,7 +76,8 @@ export class Companies {
       this.fireworkService,
       this.arcaSolutionsService,
       this.newWayService,
-      this.labsPaschoalottoService
+      this.labsPaschoalottoService,
+      this.galataService,
     ];
   }
 }
