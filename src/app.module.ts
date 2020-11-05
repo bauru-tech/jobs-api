@@ -9,6 +9,7 @@ import { ArcaSolutionsModule } from './arca-solutions/arca-solutions.module';
 import { NewWayModule } from './new-way/new-way.module';
 import { LabsPaschoalottoModule } from './labs-paschoalotto/labs-paschoalotto.module'
 import { GalataModule } from './galata/galata.module';
+import { LecomModule } from './lecom/lecom.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { GalataModule } from './galata/galata.module';
     NewWayModule,
     LabsPaschoalottoModule,
     GalataModule,
+    LecomModule,
   ],
   controllers: [AppController],
   providers: [
