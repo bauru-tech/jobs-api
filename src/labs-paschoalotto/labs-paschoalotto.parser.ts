@@ -13,13 +13,13 @@ export class LabsPaschoalottoParser {
    */
   public extractJobsLinks(response: AxiosResponse): string[] {
     const $ = cheerio.load(response.data);
-    
+
     const jobsListLinks = $('div[data-segment="Tecnologia da Informação"] > .positions > .container > a');
-    
-    
+
+
     if (jobsListLinks.length === 0) {
       console.log('sem links');
-      
+
       return [];
     }
 
@@ -104,27 +104,27 @@ export class LabsPaschoalottoParser {
    * @private
    */
   protected extractJobType($: cheerio.Root): string | null {
-    const title = this.extractJobTitle($);
+    const title = this.extractJobTitle($).toLowerCase();
 
-    if (/Analista de Testes|\(QA\)|Quality Assurance/.test(title)) {
+    if (/analista de teste[s]?|\(qa\)|quality assurance/.test(title)) {
       return 'QA';
     }
 
-    if (/[Bb]ack[-]?[Ee]nd/.test(title)) {
+    if (/back[-]?end/.test(title)) {
       return 'Back-end';
     }
 
-    if (/[Ff]ront[-]?[Ee]nd/.test(title)) {
+    if (/front[-]?end/.test(title)) {
       return 'Front-end';
     }
 
-    if (/[Dd]esigner/.test(title)) {
+    if (/designer/.test(title)) {
       return 'Designer';
     }
 
     if (
-      /[Ff]ull[-]?[Ss]tack/.test(title) ||
-      /[Dd]esenvolvedor[a]?/.test(title)
+      /full[-]?stack/.test(title) ||
+      /desenvolvedor[a]?/.test(title)
     ) {
       return 'Full-stack';
     }
