@@ -1,0 +1,124 @@
+import { Injectable } from '@nestjs/common';
+import { AxiosResponse } from 'axios';
+import { Job } from '../support/support.interface';
+import * as cheerio from "cheerio";
+
+@Injectable()
+export class LecomParser {
+  /**
+   * Parse jobs.
+   *
+   * @param response
+   */
+  public parseJobs(response: AxiosResponse): Job[] {
+    const $ = cheerio.load(response.data);
+    const jobsSection = this.findJobsSection($);
+    if (jobsSection.length === 0) {
+      return [];
+    }
+
+    const jobs = jobsSection.find('.eael-accordion-list');
+    if (jobs.length === 0) {
+      return [];
+    }
+
+    return jobs
+      .map((key, element): Job => {
+        const $el = $(element);
+
+        return {
+          title: this.extractJobTitle($el),
+          company: {
+            name: 'Lecom',
+            site: 'https://lecom.com.br',
+          },
+          link: 'https://www.lecom.com.br/trabalhe-com-a-gente/#vagas-lecom',
+          salary: null,
+          level: this.extractJobLevel($el),
+          type: this.extractJobType($el),
+          description: this.extractJobDescription($el),
+        };
+      })
+      .get();
+  }
+
+  protected findJobsSection($: cheerio.Root): cheerio.Cheerio {
+    return $(".elementor-heading-title")
+      .filter((i: number, el: cheerio.Element) => $(el).text() === 'Vagas')
+      .parents('section');
+  }
+
+  /**
+   * Extract job title.
+   *
+   * @param $el
+   * @protected
+   */
+  protected extractJobTitle($el: cheerio.Cheerio) {
+    return $el.find(".eael-accordion-tab-title").first().text();
+  }
+
+  /**
+   * Extract the job level.
+   *
+   * @param $el
+   * @protected
+   */
+  protected extractJobLevel($el: cheerio.Cheerio): string | null {
+    const title = this.extractJobTitle($el);
+
+    if (/[Ss][eê]nior/.test(title)) {
+      return 'senior';
+    }
+
+    if (/[Pp]leno/.test(title)) {
+      return 'pleno';
+    }
+
+    if (/[Jj][uú]nior/.test(title)) {
+      return 'junior';
+    }
+
+    return null;
+  }
+
+  /**
+   * Extract job type.
+   *
+   * @param $el
+   * @protected
+   */
+  protected extractJobType($el: cheerio.Cheerio): string | null {
+    const title = this.extractJobTitle($el);
+    if (/Analista de Testes|\(QA\)/.test(title)) {
+      return 'QA';
+    }
+
+    if (/[Bb]ack[-]?[Ee]nd/.test(title)) {
+      return 'Back-end';
+    }
+
+    if (/[Ff]ront[-]?[Ee]nd/.test(title)) {
+      return 'Front-end';
+    }
+
+    if (
+      /[Ff]ull[-]?[Ss]tack/.test(title) ||
+      /[Dd]esenvolvedor[a]?/.test(title)
+    ) {
+      return 'Full-stack';
+    }
+
+    return null;
+  }
+
+  /**
+   * Extract job description.
+   *
+   * @param $el
+   * @protected
+   */
+  protected extractJobDescription($el: cheerio.Cheerio) {
+    return $el.find(".eael-accordion-content").text();
+  }
+}
