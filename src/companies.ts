@@ -5,6 +5,7 @@ import { EzDevsService } from './ez-devs/ez-devs.service';
 import { FireworkService } from './firework/firework.service';
 import { ArcaSolutionsService } from './arca-solutions/arca-solutions.service';
 import { NewWayService } from './new-way/new-way.service';
+import { LabsPaschoalottoService } from './labs-paschoalotto/labs-paschoalotto.service'
 
 @Injectable()
 export class Companies {
@@ -49,6 +50,15 @@ export class Companies {
   protected newWayService: NewWayService;
 
   /**
+   * LabsPaschoalottoService.
+   *
+   * @protected
+   */
+  @Inject(LabsPaschoalottoService)
+  protected labsPaschoalottoService: LabsPaschoalottoService;
+
+
+  /**
    * Get companies.
    */
   getCompanies(): HasJobs[] {
@@ -57,7 +67,8 @@ export class Companies {
       // this.ezDevsServices,
       // this.fireworkService,
       // this.arcaSolutionsService,
-      this.newWayService,
+      // this.newWayService,
+      this.labsPaschoalottoService
     ];
   }
 }

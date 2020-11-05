@@ -7,6 +7,7 @@ import { EzDevsModule } from './ez-devs/ez-devs.module';
 import { FireworkModule } from './firework/firework.module';
 import { ArcaSolutionsModule } from './arca-solutions/arca-solutions.module';
 import { NewWayModule } from './new-way/new-way.module';
+import { LabsPaschoalottoModule } from './labs-paschoalotto/labs-paschoalotto.module'
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { NewWayModule } from './new-way/new-way.module';
     FireworkModule,
     ArcaSolutionsModule,
     NewWayModule,
+    LabsPaschoalottoModule,
   ],
   controllers: [AppController],
   providers: [
