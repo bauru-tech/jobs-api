@@ -9,6 +9,9 @@ Este projeto tem o objetivo de retornar todas as vagas disponíveis nas empresas
 - Firework
 - Arca Solutions
 - NewWay
+- LABS Paschoalotto
+- Galata
+- Lecom
 
 ## Installation
 
