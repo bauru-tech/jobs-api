@@ -1,5 +1,7 @@
 # Jobs-API
 
+Este projeto tem o objetivo de retornar todas as vagas disponíveis nas empresas de TI que são de Bauru. 
+
 ## Empresas disponiveis
 
 - NeoAssist
