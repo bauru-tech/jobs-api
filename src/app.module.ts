@@ -10,6 +10,7 @@ import { NewWayModule } from './new-way/new-way.module';
 import { LabsPaschoalottoModule } from './labs-paschoalotto/labs-paschoalotto.module'
 import { GalataModule } from './galata/galata.module';
 import { LecomModule } from './lecom/lecom.module';
+import { FinchModule } from './finch/finch.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { LecomModule } from './lecom/lecom.module';
     LabsPaschoalottoModule,
     GalataModule,
     LecomModule,
+    FinchModule,
   ],
   controllers: [AppController],
   providers: [
