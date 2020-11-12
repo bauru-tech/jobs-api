@@ -8,6 +8,7 @@ import { NewWayService } from './new-way/new-way.service';
 import { LabsPaschoalottoService } from './labs-paschoalotto/labs-paschoalotto.service'
 import { GalataService } from './galata/galata.service';
 import { LecomService } from './lecom/lecom.service';
+import { FinchService } from './finch/finch.service';
 
 @Injectable()
 export class Companies {
@@ -76,6 +77,14 @@ export class Companies {
   protected lecomService: LecomService;
 
   /**
+   * FinchService.
+   *
+   * @protected
+   */
+  @Inject(FinchService)
+  protected finchService: FinchService;
+
+  /**
    * Get companies.
    */
   getCompanies(): HasJobs[] {
@@ -88,6 +97,7 @@ export class Companies {
       this.labsPaschoalottoService,
       this.galataService,
       this.lecomService,
+      this.finchService,
     ];
   }
 }
